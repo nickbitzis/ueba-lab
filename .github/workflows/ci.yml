@@ -1,0 +1,52 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Lint
+        run: uvx ruff check .
+      - name: Test
+        run: uv run --python 3.12 --group dev pytest -q
+
+  detection-gate:
+    # Generates 90 days of logs for about 1,700 identities with 6 planted scenarios and 3 kinds of benign
+    # surprise. Fails unless every scenario becomes a case within 3 days and benign surprises cause at most 1 case.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Evaluate against planted scenarios
+        run: |
+          mkdir -p out
+          uv run --python 3.12 uebalab eval --gate --max-days 3 --max-benign 1 \
+            --out out/evaluation.json --markdown out/evaluation.md
+          cat out/evaluation.md >> "$GITHUB_STEP_SUMMARY"
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t ueba-lab:ci .
+      - name: Smoke test the container
+        run: |
+          docker run -d --name ueba -p 8892:8892 -e UEBA_SCALE=0.3 ueba-lab:ci
+          for i in $(seq 1 90); do curl -sf localhost:8892/healthz && break; sleep 2; done
+          curl -sf localhost:8892/healthz | grep -q '"ok"'
+          curl -sf localhost:8892/metrics | grep uebalab_scenarios_detected
+          CASE=$(curl -sf localhost:8892/api/cases | python3 -c "import json,sys; print(json.load(sys.stdin)['cases'][0]['case_id'])")
+          curl -sf -X POST "localhost:8892/api/cases/$CASE/open" -H 'X-Analyst: ci' | grep -q open
+          curl -sf -X POST "localhost:8892/api/cases/$CASE/feedback" -H 'X-Analyst: ci' \
+            -H 'content-type: application/json' -d '{"label": "true_positive"}' | grep -q true_positive
+          docker exec ueba ls -la /app/data
+          docker logs ueba | head -5
+          docker rm -f ueba

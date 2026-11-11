@@ -1,0 +1,608 @@
+{
+ "company": "Corvane Analytics",
+ "identities": 1699,
+ "employees": 1499,
+ "service_accounts": 200,
+ "events": 887179,
+ "days": 90,
+ "warmup_days": 28,
+ "scored_weeks": 8.9,
+ "configs": {
+  "full": {
+   "cases": 6,
+   "cases_per_week": 0.68,
+   "weekly": [
+    0,
+    0,
+    0,
+    1,
+    3,
+    2,
+    0,
+    0,
+    0
+   ],
+   "signals": 905,
+   "signals_per_week": 102.2,
+   "detected": 6,
+   "scenarios": 6,
+   "median_days_to_detect": 0.0,
+   "max_days_to_detect": 0,
+   "malicious_cases": 6,
+   "benign_cases": 0,
+   "benign_by_kind": {},
+   "other_cases": 0,
+   "precision": 1.0,
+   "scenario_rows": [
+    {
+     "sid": "S1",
+     "kind": "departing_bulk_download",
+     "start_day": 60,
+     "detected": true,
+     "case_id": "C060-9e892b",
+     "detect_day": 60,
+     "days_to_detect": 0,
+     "peak_score": 99.9,
+     "top_reasons": [
+      "First access to repo:eng-mobile-jobs; no engineer@eng-data peer accessed it in 30 days",
+      "2,810 MB read from file shares vs usual 12 (241.2x); engineer@eng-data peers today median 9"
+     ],
+     "description": "Engineer who resigned on day 52 bulk-downloads files and clones other teams' repos in the last two weeks before leaving."
+    },
+    {
+     "sid": "S2",
+     "kind": "compromised_account",
+     "start_day": 63,
+     "detected": true,
+     "case_id": "C063-367191",
+     "detect_day": 63,
+     "days_to_detect": 0,
+     "peak_score": 94.1,
+     "top_reasons": [
+      "Sign-in from new country IS, then mfa reset 25 min later",
+      "281 file reads vs usual 11 (25.6x); sales_rep@sales-na peers today median 9"
+     ],
+     "description": "Sales account signs in from Reykjavik two hours after an Austin sign-in, resets MFA, then opens finance shares and the cloud console for the first time."
+    },
+    {
+     "sid": "S3",
+     "kind": "service_account_interactive",
+     "start_day": 59,
+     "detected": true,
+     "case_id": "C059-862622",
+     "detect_day": 59,
+     "days_to_detect": 0,
+     "peak_score": 89.1,
+     "top_reasons": [
+      "Service account used for 1 interactive sign-in(s); it normally signs in only with tokens.",
+      "Activity from Boston and Ashburn data center 656 km apart, 0.4 h apart (1,788 km/h)"
+     ],
+     "description": "ETL service account used for an interactive browser sign-in from an office laptop, then reads HR shares."
+    },
+    {
+     "sid": "S4",
+     "kind": "credential_sharing",
+     "start_day": 52,
+     "detected": true,
+     "case_id": "C052-143ea9",
+     "detect_day": 52,
+     "days_to_detect": 0,
+     "peak_score": 87.1,
+     "top_reasons": [
+      "Activity from Dublin and Austin 7,447 km apart, 5.8 h apart (1,291 km/h)",
+      "First access to share:hr/projects (sensitive); no support_agent@support peer accessed it in 30 days"
+     ],
+     "description": "Dublin support account is also used from Austin on an unknown device on the same days."
+    },
+    {
+     "sid": "S5",
+     "kind": "contractor_after_end_date",
+     "start_day": 61,
+     "detected": true,
+     "case_id": "C061-533f1d",
+     "detect_day": 61,
+     "days_to_detect": 0,
+     "peak_score": 97.8,
+     "top_reasons": [
+      "6 events 1 day(s) after the contract end date"
+     ],
+     "description": "Contractor whose contract ended on day 60 keeps signing in and reading files."
+    },
+    {
+     "sid": "S6",
+     "kind": "admin_mass_permission_change",
+     "start_day": 66,
+     "detected": true,
+     "case_id": "C066-d75994",
+     "detect_day": 66,
+     "days_to_detect": 0,
+     "peak_score": 58.6,
+     "top_reasons": [
+      "120 privilege changes vs usual 3 (40.0x); it_admin@it peers today median 3",
+      "340 share permission changes vs usual 2 (138.0x); it_admin@it peers today median 3"
+     ],
+     "description": "IT admin makes 340 share permission changes and 120 cloud role grants at 2 a.m."
+    }
+   ],
+   "benign_subjects": {
+    "approved_travel": 15,
+    "team_reorg": 20,
+    "quarter_end_finance": 183
+   },
+   "label": "Peers and context"
+  },
+  "no_context": {
+   "cases": 10,
+   "cases_per_week": 1.13,
+   "weekly": [
+    0,
+    1,
+    0,
+    3,
+    2,
+    2,
+    2,
+    0,
+    0
+   ],
+   "signals": 897,
+   "signals_per_week": 101.3,
+   "detected": 5,
+   "scenarios": 6,
+   "median_days_to_detect": 0,
+   "max_days_to_detect": 0,
+   "malicious_cases": 5,
+   "benign_cases": 5,
+   "benign_by_kind": {
+    "approved_travel": 5
+   },
+   "other_cases": 0,
+   "precision": 0.5,
+   "scenario_rows": [
+    {
+     "sid": "S1",
+     "kind": "departing_bulk_download",
+     "start_day": 60,
+     "detected": true,
+     "case_id": "C060-9e892b",
+     "detect_day": 60,
+     "days_to_detect": 0,
+     "peak_score": 99.0,
+     "top_reasons": [
+      "First access to repo:eng-mobile-jobs; no engineer@eng-data peer accessed it in 30 days",
+      "2,810 MB read from file shares vs usual 12 (241.2x); engineer@eng-data peers today median 9"
+     ],
+     "description": "Engineer who resigned on day 52 bulk-downloads files and clones other teams' repos in the last two weeks before leaving."
+    },
+    {
+     "sid": "S2",
+     "kind": "compromised_account",
+     "start_day": 63,
+     "detected": true,
+     "case_id": "C063-367191",
+     "detect_day": 63,
+     "days_to_detect": 0,
+     "peak_score": 94.1,
+     "top_reasons": [
+      "Sign-in from new country IS, then mfa reset 25 min later",
+      "281 file reads vs usual 11 (25.6x); sales_rep@sales-na peers today median 9"
+     ],
+     "description": "Sales account signs in from Reykjavik two hours after an Austin sign-in, resets MFA, then opens finance shares and the cloud console for the first time."
+    },
+    {
+     "sid": "S3",
+     "kind": "service_account_interactive",
+     "start_day": 59,
+     "detected": true,
+     "case_id": "C059-862622",
+     "detect_day": 59,
+     "days_to_detect": 0,
+     "peak_score": 89.1,
+     "top_reasons": [
+      "Service account used for 1 interactive sign-in(s); it normally signs in only with tokens.",
+      "Activity from Boston and Ashburn data center 656 km apart, 0.4 h apart (1,788 km/h)"
+     ],
+     "description": "ETL service account used for an interactive browser sign-in from an office laptop, then reads HR shares."
+    },
+    {
+     "sid": "S4",
+     "kind": "credential_sharing",
+     "start_day": 52,
+     "detected": true,
+     "case_id": "C052-143ea9",
+     "detect_day": 52,
+     "days_to_detect": 0,
+     "peak_score": 87.1,
+     "top_reasons": [
+      "Activity from Dublin and Austin 7,447 km apart, 5.8 h apart (1,291 km/h)",
+      "First access to share:hr/projects (sensitive); no support_agent@support peer accessed it in 30 days"
+     ],
+     "description": "Dublin support account is also used from Austin on an unknown device on the same days."
+    },
+    {
+     "sid": "S5",
+     "kind": "contractor_after_end_date",
+     "start_day": 61,
+     "detected": false,
+     "case_id": null,
+     "detect_day": null,
+     "days_to_detect": null,
+     "peak_score": null,
+     "top_reasons": [],
+     "description": "Contractor whose contract ended on day 60 keeps signing in and reading files."
+    },
+    {
+     "sid": "S6",
+     "kind": "admin_mass_permission_change",
+     "start_day": 66,
+     "detected": true,
+     "case_id": "C066-d75994",
+     "detect_day": 66,
+     "days_to_detect": 0,
+     "peak_score": 58.6,
+     "top_reasons": [
+      "120 privilege changes vs usual 3 (40.0x); it_admin@it peers today median 3",
+      "340 share permission changes vs usual 2 (138.0x); it_admin@it peers today median 3"
+     ],
+     "description": "IT admin makes 340 share permission changes and 120 cloud role grants at 2 a.m."
+    }
+   ],
+   "benign_subjects": {
+    "approved_travel": 15,
+    "team_reorg": 20,
+    "quarter_end_finance": 183
+   },
+   "label": "Peers, no context"
+  },
+  "no_peers": {
+   "cases": 6,
+   "cases_per_week": 0.68,
+   "weekly": [
+    0,
+    0,
+    0,
+    1,
+    3,
+    2,
+    0,
+    0,
+    0
+   ],
+   "signals": 1878,
+   "signals_per_week": 212.0,
+   "detected": 6,
+   "scenarios": 6,
+   "median_days_to_detect": 0.0,
+   "max_days_to_detect": 0,
+   "malicious_cases": 6,
+   "benign_cases": 0,
+   "benign_by_kind": {},
+   "other_cases": 0,
+   "precision": 1.0,
+   "scenario_rows": [
+    {
+     "sid": "S1",
+     "kind": "departing_bulk_download",
+     "start_day": 60,
+     "detected": true,
+     "case_id": "C060-9e892b",
+     "detect_day": 60,
+     "days_to_detect": 0,
+     "peak_score": 99.9,
+     "top_reasons": [
+      "First access to repo:eng-mobile-jobs; never accessed by this identity before",
+      "2,810 MB read from file shares vs usual 12 (241.2x); engineer@eng-data peers today median 9"
+     ],
+     "description": "Engineer who resigned on day 52 bulk-downloads files and clones other teams' repos in the last two weeks before leaving."
+    },
+    {
+     "sid": "S2",
+     "kind": "compromised_account",
+     "start_day": 63,
+     "detected": true,
+     "case_id": "C063-367191",
+     "detect_day": 63,
+     "days_to_detect": 0,
+     "peak_score": 94.1,
+     "top_reasons": [
+      "Sign-in from new country IS, then mfa reset 25 min later",
+      "281 file reads vs usual 11 (25.6x); sales_rep@sales-na peers today median 9"
+     ],
+     "description": "Sales account signs in from Reykjavik two hours after an Austin sign-in, resets MFA, then opens finance shares and the cloud console for the first time."
+    },
+    {
+     "sid": "S3",
+     "kind": "service_account_interactive",
+     "start_day": 59,
+     "detected": true,
+     "case_id": "C059-862622",
+     "detect_day": 59,
+     "days_to_detect": 0,
+     "peak_score": 89.1,
+     "top_reasons": [
+      "Service account used for 1 interactive sign-in(s); it normally signs in only with tokens.",
+      "Activity from Boston and Ashburn data center 656 km apart, 0.4 h apart (1,788 km/h)"
+     ],
+     "description": "ETL service account used for an interactive browser sign-in from an office laptop, then reads HR shares."
+    },
+    {
+     "sid": "S4",
+     "kind": "credential_sharing",
+     "start_day": 52,
+     "detected": true,
+     "case_id": "C052-143ea9",
+     "detect_day": 52,
+     "days_to_detect": 0,
+     "peak_score": 87.1,
+     "top_reasons": [
+      "Activity from Dublin and Austin 7,447 km apart, 5.8 h apart (1,291 km/h)",
+      "First access to share:hr/projects (sensitive); never accessed by this identity before"
+     ],
+     "description": "Dublin support account is also used from Austin on an unknown device on the same days."
+    },
+    {
+     "sid": "S5",
+     "kind": "contractor_after_end_date",
+     "start_day": 61,
+     "detected": true,
+     "case_id": "C061-533f1d",
+     "detect_day": 61,
+     "days_to_detect": 0,
+     "peak_score": 97.8,
+     "top_reasons": [
+      "6 events 1 day(s) after the contract end date"
+     ],
+     "description": "Contractor whose contract ended on day 60 keeps signing in and reading files."
+    },
+    {
+     "sid": "S6",
+     "kind": "admin_mass_permission_change",
+     "start_day": 66,
+     "detected": true,
+     "case_id": "C066-d75994",
+     "detect_day": 66,
+     "days_to_detect": 0,
+     "peak_score": 58.6,
+     "top_reasons": [
+      "120 privilege changes vs usual 3 (40.0x); it_admin@it peers today median 3",
+      "340 share permission changes vs usual 2 (138.0x); it_admin@it peers today median 3"
+     ],
+     "description": "IT admin makes 340 share permission changes and 120 cloud role grants at 2 a.m."
+    }
+   ],
+   "benign_subjects": {
+    "approved_travel": 15,
+    "team_reorg": 20,
+    "quarter_end_finance": 183
+   },
+   "label": "Context, no peers"
+  },
+  "neither": {
+   "cases": 25,
+   "cases_per_week": 2.82,
+   "weekly": [
+    0,
+    1,
+    14,
+    3,
+    2,
+    2,
+    2,
+    1,
+    0
+   ],
+   "signals": 1870,
+   "signals_per_week": 211.1,
+   "detected": 5,
+   "scenarios": 6,
+   "median_days_to_detect": 0,
+   "max_days_to_detect": 0,
+   "malicious_cases": 5,
+   "benign_cases": 20,
+   "benign_by_kind": {
+    "team_reorg": 14,
+    "approved_travel": 5,
+    "quarter_end_finance": 1
+   },
+   "other_cases": 0,
+   "precision": 0.2,
+   "scenario_rows": [
+    {
+     "sid": "S1",
+     "kind": "departing_bulk_download",
+     "start_day": 60,
+     "detected": true,
+     "case_id": "C060-9e892b",
+     "detect_day": 60,
+     "days_to_detect": 0,
+     "peak_score": 99.0,
+     "top_reasons": [
+      "First access to repo:eng-mobile-jobs; never accessed by this identity before",
+      "2,810 MB read from file shares vs usual 12 (241.2x); engineer@eng-data peers today median 9"
+     ],
+     "description": "Engineer who resigned on day 52 bulk-downloads files and clones other teams' repos in the last two weeks before leaving."
+    },
+    {
+     "sid": "S2",
+     "kind": "compromised_account",
+     "start_day": 63,
+     "detected": true,
+     "case_id": "C063-367191",
+     "detect_day": 63,
+     "days_to_detect": 0,
+     "peak_score": 94.1,
+     "top_reasons": [
+      "Sign-in from new country IS, then mfa reset 25 min later",
+      "281 file reads vs usual 11 (25.6x); sales_rep@sales-na peers today median 9"
+     ],
+     "description": "Sales account signs in from Reykjavik two hours after an Austin sign-in, resets MFA, then opens finance shares and the cloud console for the first time."
+    },
+    {
+     "sid": "S3",
+     "kind": "service_account_interactive",
+     "start_day": 59,
+     "detected": true,
+     "case_id": "C059-862622",
+     "detect_day": 59,
+     "days_to_detect": 0,
+     "peak_score": 89.1,
+     "top_reasons": [
+      "Service account used for 1 interactive sign-in(s); it normally signs in only with tokens.",
+      "Activity from Boston and Ashburn data center 656 km apart, 0.4 h apart (1,788 km/h)"
+     ],
+     "description": "ETL service account used for an interactive browser sign-in from an office laptop, then reads HR shares."
+    },
+    {
+     "sid": "S4",
+     "kind": "credential_sharing",
+     "start_day": 52,
+     "detected": true,
+     "case_id": "C052-143ea9",
+     "detect_day": 52,
+     "days_to_detect": 0,
+     "peak_score": 87.1,
+     "top_reasons": [
+      "Activity from Dublin and Austin 7,447 km apart, 5.8 h apart (1,291 km/h)",
+      "First access to share:hr/projects (sensitive); never accessed by this identity before"
+     ],
+     "description": "Dublin support account is also used from Austin on an unknown device on the same days."
+    },
+    {
+     "sid": "S5",
+     "kind": "contractor_after_end_date",
+     "start_day": 61,
+     "detected": false,
+     "case_id": null,
+     "detect_day": null,
+     "days_to_detect": null,
+     "peak_score": null,
+     "top_reasons": [],
+     "description": "Contractor whose contract ended on day 60 keeps signing in and reading files."
+    },
+    {
+     "sid": "S6",
+     "kind": "admin_mass_permission_change",
+     "start_day": 66,
+     "detected": true,
+     "case_id": "C066-d75994",
+     "detect_day": 66,
+     "days_to_detect": 0,
+     "peak_score": 58.6,
+     "top_reasons": [
+      "120 privilege changes vs usual 3 (40.0x); it_admin@it peers today median 3",
+      "340 share permission changes vs usual 2 (138.0x); it_admin@it peers today median 3"
+     ],
+     "description": "IT admin makes 340 share permission changes and 120 cloud role grants at 2 a.m."
+    }
+   ],
+   "benign_subjects": {
+    "approved_travel": 15,
+    "team_reorg": 20,
+    "quarter_end_finance": 183
+   },
+   "label": "Neither"
+  }
+ },
+ "scenarios": [
+  {
+   "sid": "S1",
+   "kind": "departing_bulk_download",
+   "start_day": 60,
+   "detected": true,
+   "case_id": "C060-9e892b",
+   "detect_day": 60,
+   "days_to_detect": 0,
+   "peak_score": 99.9,
+   "top_reasons": [
+    "First access to repo:eng-mobile-jobs; no engineer@eng-data peer accessed it in 30 days",
+    "2,810 MB read from file shares vs usual 12 (241.2x); engineer@eng-data peers today median 9"
+   ],
+   "description": "Engineer who resigned on day 52 bulk-downloads files and clones other teams' repos in the last two weeks before leaving."
+  },
+  {
+   "sid": "S2",
+   "kind": "compromised_account",
+   "start_day": 63,
+   "detected": true,
+   "case_id": "C063-367191",
+   "detect_day": 63,
+   "days_to_detect": 0,
+   "peak_score": 94.1,
+   "top_reasons": [
+    "Sign-in from new country IS, then mfa reset 25 min later",
+    "281 file reads vs usual 11 (25.6x); sales_rep@sales-na peers today median 9"
+   ],
+   "description": "Sales account signs in from Reykjavik two hours after an Austin sign-in, resets MFA, then opens finance shares and the cloud console for the first time."
+  },
+  {
+   "sid": "S3",
+   "kind": "service_account_interactive",
+   "start_day": 59,
+   "detected": true,
+   "case_id": "C059-862622",
+   "detect_day": 59,
+   "days_to_detect": 0,
+   "peak_score": 89.1,
+   "top_reasons": [
+    "Service account used for 1 interactive sign-in(s); it normally signs in only with tokens.",
+    "Activity from Boston and Ashburn data center 656 km apart, 0.4 h apart (1,788 km/h)"
+   ],
+   "description": "ETL service account used for an interactive browser sign-in from an office laptop, then reads HR shares."
+  },
+  {
+   "sid": "S4",
+   "kind": "credential_sharing",
+   "start_day": 52,
+   "detected": true,
+   "case_id": "C052-143ea9",
+   "detect_day": 52,
+   "days_to_detect": 0,
+   "peak_score": 87.1,
+   "top_reasons": [
+    "Activity from Dublin and Austin 7,447 km apart, 5.8 h apart (1,291 km/h)",
+    "First access to share:hr/projects (sensitive); no support_agent@support peer accessed it in 30 days"
+   ],
+   "description": "Dublin support account is also used from Austin on an unknown device on the same days."
+  },
+  {
+   "sid": "S5",
+   "kind": "contractor_after_end_date",
+   "start_day": 61,
+   "detected": true,
+   "case_id": "C061-533f1d",
+   "detect_day": 61,
+   "days_to_detect": 0,
+   "peak_score": 97.8,
+   "top_reasons": [
+    "6 events 1 day(s) after the contract end date"
+   ],
+   "description": "Contractor whose contract ended on day 60 keeps signing in and reading files."
+  },
+  {
+   "sid": "S6",
+   "kind": "admin_mass_permission_change",
+   "start_day": 66,
+   "detected": true,
+   "case_id": "C066-d75994",
+   "detect_day": 66,
+   "days_to_detect": 0,
+   "peak_score": 58.6,
+   "top_reasons": [
+    "120 privilege changes vs usual 3 (40.0x); it_admin@it peers today median 3",
+    "340 share permission changes vs usual 2 (138.0x); it_admin@it peers today median 3"
+   ],
+   "description": "IT admin makes 340 share permission changes and 120 cloud role grants at 2 a.m."
+  }
+ ],
+ "gate": {
+  "passed": true,
+  "failures": [],
+  "max_days": 3,
+  "max_benign": 1
+ },
+ "timings": {
+  "generate": 17.36,
+  "ingest": 10.18,
+  "detect": 33.32
+ }
+}
